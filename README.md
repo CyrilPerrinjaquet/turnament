@@ -43,3 +43,4 @@ On va rien faire de complexe en CSS, on est pas designer malheureusement.
 ## Partie 3 - JavaScript
 
 On verra au dès que la base est prête.
+
