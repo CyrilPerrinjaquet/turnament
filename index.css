@@ -110,11 +110,13 @@ body {
 
 .h3-ranks {
     width: min-content;
+    padding: 2px;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
 }
 
 .h3-matchs {
+    padding: 2px;
     width: min-content;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
@@ -152,7 +154,7 @@ body {
     .mainContainer {
         width: 300px;
     }
-    
+
     html {
         height: 80%;
     }
@@ -170,14 +172,14 @@ body {
         padding: 2px;
         width: 120px;
     }
-    
+
 }
 
-@media screen and (max-width: 365px)  {
+@media screen and (max-width: 365px) {
     .mainContainer {
         width: 200px;
     }
-    
+
     html {
         height: 100%;
     }
@@ -195,7 +197,7 @@ body {
         padding: 2px;
         width: 80px;
     }
-    
+
 }
 
 @media screen and (max-height: 610px) {
@@ -237,7 +239,7 @@ body {
         padding: 2px;
         width: 80px;
     }
-    
+
 }
 
 @media screen and (max-height: 610px) and (min-width: 325px) {
@@ -281,4 +283,3 @@ body {
     }
 
 }
-
