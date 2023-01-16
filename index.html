@@ -1,39 +1,57 @@
 <!DOCTYPE html>
+<html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
   </link>
   <title>Turnament</title>
 </head>
 
 <body>
-  <h2>Turnament</h2>
-  <label for="teamA"></label>
-  <input type="text" name="teamA" id="teamA" placeholder="Team A" />
-  <p>VS</p>
-  <label for="teamB"></label>
-  <input type="text" name="teamB" id="teamB" placeholder="Team B" />
-  <label for="scoreTeamA"></label>
-  <input type="number" name="scoreTeamA" id="scoreTeamA" value="0" />
-  <p><strong>/</strong></p>
-  <label for="scoreTeamB"></label>
-  <input type="number" name="scoreTeamB" id="scoreTeamB" value="0" />
-  <label for="save"></label>
-  <input type="submit" value="Save" id="save" />
-  </form>
-  <h3>Ranks</h3>
-  <ol>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ol>
-  <h3>Matchs</h3>
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-  <script src="index.js"></script>
+  <section class="mainContainer">
+    <div class="title-turnament">
+      <h1>Turnament</h1>
+    </div>
+    <form>
+      <div class="input-buttons-fields-main">
+        <label for="teamA"></label>
+        <input type="text" name="teamA" id="teamA" class="team-input" placeholder="Team A" />
+        <p>VS</p>
+        <label for="teamB"></label>
+        <input type="text" name="teamB" id="teamB" class="team-input" placeholder="Team B" />
+        <div class="input-buttonAndNumbers-fields">
+          <div class="input-numbers">
+            <label for="scoreTeamA"></label>
+            <input type="number" name="scoreTeamA" id="scoreTeamA" class="scoreTeam" value="0" />
+            <p><strong>/</strong></p>
+            <label for="scoreTeamB"></label>
+            <input type="number" name="scoreTeamB" id="scoreTeamB" class="scoreTeam" value="0" />
+          </div>
+          <div class="button">
+            <label for="save"></label>
+            <input type="submit" id="save" class="saveButton" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="ranks">
+      <h3>Ranks</h3>
+      <ol class="list-order">
+        <li class="list-item-order"></li>
+        <li class="list-item-order"></li>
+        <li class="list-item-order"></li>
+      </ol>
+    </div>
+    <div class="matchs">
+      <h3>Matchs</h3>
+      <ul class="list-unOrder">
+        <li class="list-item"></li>
+        <li class="list-item"></li>
+        <li class="list-item"></li>
+      </ul>
+    </div>
+  </section>
 </body>
 
 </html>
