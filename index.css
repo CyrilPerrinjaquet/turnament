@@ -90,6 +90,13 @@ h3 {
     border-bottom: 2px solid black;
 }
 
+.teamName {
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 230px;
+}
+
 .list-order,
 .list-unOrder {
     padding-top: 5px;
