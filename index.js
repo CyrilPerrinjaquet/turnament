@@ -16,7 +16,6 @@ function getDataFromForm(event) {
     const scoreTeamB = dataForm.get("scoreTeamB");
 
     addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB });
-    formElement.reset();
 }
 
 function isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB }) {
@@ -37,10 +36,8 @@ function addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB }) {
 
     if (scoreTeamA > scoreTeamB) {
         winner = teamA;
-    }
-
-    if (scoreTeamB > scoreTeamA) {
-        winner = teamB;
+    } else {
+        winner = teamB
     }
 
     if (isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB })) {
