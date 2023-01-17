@@ -17,28 +17,28 @@ function getDataFromForm(event) {
 }
 
 function isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB }) {
-    if (teamA.trim() === "" || teamB.trim() === "") {
-        return false;
-    } else if (teamA.toLowerCase() === teamB.toLowerCase()) {
-        return false;
-    }
-
-    return true;
+    return !(teamA.trim() === "" || teamB.trim() === "" || teamA.toLowerCase() === teamB.toLowerCase());
 }
 
 function addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB }) {
+    if (isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB })) {
+        const winner = getWinner({ teamA, teamB, scoreTeamA, scoreTeamB });
+        matchList.push({ teamA, teamB, winner });
+        updateMatchListElement();
+    } else {
+        alert("Match isn't valid");
+    }
+
+}
+
+function getWinner({ teamA, teamB, scoreTeamA, scoreTeamB }) {
     let winner;
     if (scoreTeamA > scoreTeamB) {
         winner = teamA;
     } else if (scoreTeamB > scoreTeamA) {
         winner = teamB;
     }
-    if (isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB })) {
-        matchList.push({ teamA, teamB, winner });
-        updateMatchListElement();
-    } else {
-        alert("Match isn't valid");
-    }
+    return winner;
 }
 
 function updateMatchListElement() {
