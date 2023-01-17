@@ -1,9 +1,7 @@
-// HTML
+// This the part of HTML, we retrieve the id of the form element and the id of the match list
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 
-
-// Array 
 const matchList = [];
 
 
@@ -21,27 +19,22 @@ function getDataFromForm(event) {
 function isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB }) {
     if (teamA.trim() === "" || teamB.trim() === "") {
         return false;
-    }
-    if (teamA === teamB) {
+    } else if (teamA.toLowerCase() === teamB.toLowerCase()) {
         return false;
     }
 
     return true;
-
-    // Team A != Team B ; => surtout ca 
 }
 
 function addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB }) {
     let winner;
-
     if (scoreTeamA > scoreTeamB) {
         winner = teamA;
-    } else {
-        winner = teamB
+    } else if (scoreTeamB > scoreTeamA) {
+        winner = teamB;
     }
-
     if (isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB })) {
-        matchList.push({ teamA: teamA, teamB: teamB, winner: winner });
+        matchList.push({ teamA, teamB, winner });
         updateMatchListElement();
     } else {
         alert("Match isn't valid");
@@ -52,8 +45,7 @@ function updateMatchListElement() {
     const lastElementFromArray = matchList[matchList.length - 1];
 
     const newMatchItem = document.createElement("li");
-    const itemText = document.createTextNode(lastElementFromArray.teamA + " VS " + lastElementFromArray.teamB + " Winner is => " + lastElementFromArray.winner);
-
+    const itemText = document.createTextNode(`${lastElementFromArray.teamA} VS ${lastElementFromArray.teamB} => ${lastElementFromArray.winner ?? "No winner"}`);
     newMatchItem.appendChild(itemText);
     matchListElement.appendChild(newMatchItem);
 }
