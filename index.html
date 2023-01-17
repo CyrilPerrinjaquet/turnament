@@ -10,20 +10,22 @@
 
 <body>
   <section class="mainContainer">
-    <div class="title-turnament">
+    <div class="titleTurnament">
       <h1>Turnament</h1>
     </div>
     <form id="formMatchs">
-      <div class="input-buttons-fields-main">
+      <div class="inputButtonsFieldsMain">
         <h4 class="teamName">Name of the teams : </h4>
-        <input type="text" name="teamA" id="teamA" class="team-input" placeholder="Team A" maxlength="16" required/>
+        <input type="text" name="teamA" id="teamA" class="teamInput" placeholder="Team A" maxlength="16" required />
         <p>VS</p>
-        <input type="text" name="teamB" id="teamB" class="team-input" placeholder="Team B" maxlength="16" required/>
-        <div class="input-buttonAndNumbers-fields">
-          <div class="input-numbers">
-            <input type="number" name="scoreTeamA" id="scoreTeamA" class="scoreTeam" value="0" min="0" max="150" required/>
+        <input type="text" name="teamB" id="teamB" class="teamInput" placeholder="Team B" maxlength="16" required />
+        <div class="inputButtonAndNumbersFields">
+          <div class="inputNumbers">
+            <input type="number" name="scoreTeamA" id="scoreTeamA" class="scoreTeam" value="0" min="0" max="150"
+              required />
             <p><strong>/</strong></p>
-            <input type="number" name="scoreTeamB" id="scoreTeamB" class="scoreTeam" value="0" min="0" max="150" required/>
+            <input type="number" name="scoreTeamB" id="scoreTeamB" class="scoreTeam" value="0" min="0" max="150"
+              required />
           </div>
           <div class="button">
             <button type="submit" class="saveButton">Save</button>
@@ -33,12 +35,12 @@
     </form>
     <div class="ranks">
       <h3>Ranks</h3>
-      <ol id="ranksList" class="list-order">
+      <ol id="ranksList" class="listOrder">
       </ol>
     </div>
     <div class="matchs">
       <h3>Matchs</h3>
-      <ul id="matchsList" class="list-unOrder">
+      <ul id="matchsList" class="listUnOrder">
       </ul>
     </div>
   </section>

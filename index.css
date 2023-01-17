@@ -17,13 +17,13 @@ body {
     border: 2px solid black;
 }
 
-.title-turnament {
+.titleTurnament {
     height: 50px;
     text-align: center;
     border: 1px solid black;
 }
 
-.input-buttons-fields-main {
+.inputButtonsFieldsMain {
     padding-top: 10px;
     display: flex;
     flex-direction: row;
@@ -33,11 +33,11 @@ body {
     border: 1px solid black;
 }
 
-.input-buttons-fields-main p {
+.inputButtonsFieldsMain p {
     margin: 0;
 }
 
-.team-input {
+.teamInput {
     align-self: flex-start;
     border-radius: 5px;
     border: none;
@@ -50,7 +50,7 @@ body {
     border-radius: 5px;
 }
 
-.input-numbers {
+.inputNumbers {
     height: 20px;
     border: none;
     display: flex;
@@ -67,7 +67,7 @@ body {
     border: none;
 }
 
-.input-buttonAndNumbers-fields {
+.inputButtonAndNumbersFields {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,27 +98,21 @@ h3 {
     width: 230px;
 }
 
-.list-order,
-.list-unOrder {
+.listOrder,
+.listUnOrder {
     padding-top: 5px;
     padding-left: 35px;
     font-weight: bold;
 }
 
-.list-item-order {
-    list-style-type: decimal;
-}
 
-.list-item {
-    list-style-type: disc;
-}
 
 @media screen and (max-width: 480px) {
     .mainContainer {
         width: 260px;
     }
 
-    .team-input {
+    .teamInput {
         border-radius: 5px;
         border: none;
         padding: 2px;
