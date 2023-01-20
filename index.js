@@ -4,7 +4,7 @@ const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
 
 const matchList = [];
-const teamList = [];
+let teamList = [];
 
 function getDataFromForm(event) {
   event.preventDefault();
@@ -14,8 +14,6 @@ function getDataFromForm(event) {
   const scoreTeamA = dataForm.get("scoreTeamA");
   const scoreTeamB = dataForm.get("scoreTeamB");
   addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB });
-  addTeamsToTeamList({ teamA, teamB });
-  updateTeamWins({ team });
 }
 
 function isMatchValid({ teamA, teamB }) {
@@ -28,9 +26,13 @@ function isMatchValid({ teamA, teamB }) {
 
 function addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB }) {
   if (isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB })) {
+    addTeamsToTeamList({ teamA, teamB });
     const winner = getWinner({ teamA, teamB, scoreTeamA, scoreTeamB });
     matchList.push({ teamA, teamB, winner });
     updateMatchListElement();
+    if (winner) {
+      updateTeamWins(winner);
+    }
   } else {
     alert("Match isn't valid");
   }
@@ -69,6 +71,7 @@ function addTeamsToTeamList({ teamA, teamB }) {
 
 function updateRanksListElement() {
   rankListElement.innerHTML = "";
+
   teamList.forEach((team) => {
     const newRankItem = document.createElement("li");
     const itemText = document.createTextNode(
@@ -77,6 +80,16 @@ function updateRanksListElement() {
     newRankItem.appendChild(itemText);
     rankListElement.appendChild(newRankItem);
   });
+}
+
+function updateTeamWins(team) {
+  const indexOfName = teamList.indexOf(
+    teamList.find((element) => element.name === team)
+  );
+  teamList[indexOfName].wins += 1;
+
+  teamList = teamList.sort((a, b) => b.wins - a.wins);
+  updateRanksListElement();
 }
 
 formElement.onsubmit = getDataFromForm;
