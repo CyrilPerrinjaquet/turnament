@@ -1,127 +1,119 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .mainContainer {
-    background-color: gray;
-    width: 400px;
-    border: 2px solid black;
+  background-color: gray;
+  width: 400px;
+  border: 2px solid black;
 }
 
-.title-turnament {
-    height: 50px;
-    text-align: center;
-    border: 1px solid black;
+.titleTurnament {
+  height: 50px;
+  text-align: center;
+  border: 1px solid black;
 }
 
-.input-buttons-fields-main {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    border: 1px solid black;
+.inputButtonsFieldsMain {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
 }
 
-.input-buttons-fields-main p {
-    margin: 0;
+.inputButtonsFieldsMain p {
+  margin: 0;
 }
 
-.team-input {
-    align-self: flex-start;
-    border-radius: 5px;
-    border: none;
-    padding: 2px;
+.teamInput {
+  align-self: flex-start;
+  border-radius: 5px;
+  border: none;
+  padding: 2px;
 }
 
 .scoreTeam {
-    width: 50px;
-    border: none;
-    border-radius: 5px;
+  width: 50px;
+  border: none;
+  border-radius: 5px;
 }
 
-.input-numbers {
-    height: 20px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
+.inputNumbers {
+  height: 20px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 .saveButton {
-    height: 30px;
-    width: 100px;
-    margin-top: 6px;
-    border-radius: 6px;
-    border: none;
+  height: 30px;
+  width: 100px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: none;
 }
 
-.input-buttonAndNumbers-fields {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+.inputButtonAndNumbersFields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .ranks,
 .matchs {
-    border: 1px solid black;
-    height: 140px;
+  border: 1px solid black;
+  height: 140px;
+  overflow-y: auto;
 }
 
 h3 {
-    margin: 0;
-    width: min-content;
-    padding: 2px;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+  margin: 0;
+  width: min-content;
+  padding: 2px;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .teamName {
-    margin: 0;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 230px;
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 230px;
 }
 
-.list-order,
-.list-unOrder {
-    padding-top: 5px;
-    padding-left: 35px;
-    font-weight: bold;
-}
-
-.list-item-order {
-    list-style-type: decimal;
-}
-
-.list-item {
-    list-style-type: disc;
+.listOrder,
+.listUnOrder {
+  padding-top: 5px;
+  padding-left: 35px;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 480px) {
-    .mainContainer {
-        width: 260px;
-    }
+  .mainContainer {
+    width: 260px;
+  }
 
-    .team-input {
-        border-radius: 5px;
-        border: none;
-        padding: 2px;
-        width: 100px;
-    }
-
+  .teamInput {
+    border-radius: 5px;
+    border: none;
+    padding: 2px;
+    width: 100px;
+  }
 }
