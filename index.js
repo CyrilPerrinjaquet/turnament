@@ -1,8 +1,10 @@
 // This the part of HTML, we retrieve the id of the form element and the id of the match list
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
+const rankListElement = document.getElementById("ranksList");
 
 const matchList = [];
+const teamList = [];
 
 function getDataFromForm(event) {
   event.preventDefault();
@@ -11,8 +13,9 @@ function getDataFromForm(event) {
   const teamB = dataForm.get("teamB");
   const scoreTeamA = dataForm.get("scoreTeamA");
   const scoreTeamB = dataForm.get("scoreTeamB");
-
   addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB });
+  addTeamsToTeamList({ teamA, teamB });
+  updateTeamWins({ team });
 }
 
 function isMatchValid({ teamA, teamB }) {
@@ -52,6 +55,28 @@ function updateMatchListElement() {
   );
   newMatchItem.appendChild(itemText);
   matchListElement.appendChild(newMatchItem);
+}
+
+function addTeamsToTeamList({ teamA, teamB }) {
+  if (!teamList.find((element) => element.name === teamA)) {
+    teamList.push({ name: teamA, wins: 0 });
+  }
+
+  if (!teamList.find((element) => element.name === teamB)) {
+    teamList.push({ name: teamB, wins: 0 });
+  }
+}
+
+function updateRanksListElement() {
+  rankListElement.innerHTML = "";
+  teamList.forEach((team) => {
+    const newRankItem = document.createElement("li");
+    const itemText = document.createTextNode(
+      `${team.name} has ${team.wins} wins`
+    );
+    newRankItem.appendChild(itemText);
+    rankListElement.appendChild(newRankItem);
+  });
 }
 
 formElement.onsubmit = getDataFromForm;
