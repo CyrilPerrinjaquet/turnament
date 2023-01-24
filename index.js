@@ -60,10 +60,17 @@ function updateMatchListElement() {
 }
 
 function addTeamsToTeamList({ teamA, teamB }) {
-  if (!teamList.find((team) => team.name === teamA)) {
-    teamList.push({ name: teamA, wins: 0 });
-  } else if (!teamList.find((team) => team.name === teamB)) {
-    teamList.push({ name: teamB, wins: 0 });
+  if (teamA) {
+    findTeamNameAndPushIt(teamA);
+  }
+  if (teamB) {
+    findTeamNameAndPushIt(teamB);
+  }
+}
+
+function findTeamNameAndPushIt(teamName) {
+  if (!teamList.find((team) => team.name === teamName)) {
+    teamList.push({ name: teamName, wins: 0 });
   }
 }
 
@@ -80,8 +87,8 @@ function updateRanksListElement() {
   });
 }
 
-function updateTeamWins(team) {
-  const indexOfWinningTeam = teamList.findIndex((team) => team.name === team);
+function updateTeamWins(winner) {
+  const indexOfWinningTeam = teamList.findIndex((team) => team.name === winner);
   teamList[indexOfWinningTeam].wins += 1;
 
   teamList = teamList.sort((teamA, teamB) => teamB.wins - teamA.wins);
