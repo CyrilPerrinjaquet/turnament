@@ -1,50 +1,46 @@
 const SEPARATOR = "%**%";
-const PROMPT_TEXT = "Please enter a name for the storage";
+const PROMPT_TEXT = "Please enter a file name";
 
 const saveButtonElement = document.getElementById("saveStorageButton");
 const loadButtonElement = document.getElementById("loadStorageButton");
 
 function saveTournament(saveName) {
-  const joinedArray = [
-    matchListElement.innerHTML,
-    rankListElement.innerHTML,
-  ].join(SEPARATOR);
-  localStorage.setItem(saveName, joinedArray);
+  if (
+    !matchListElement.innerHTML.includes(SEPARATOR) &&
+    !rankListElement.innerHTML.includes(SEPARATOR)
+  ) {
+    const joinedArray = [
+      matchListElement.innerHTML,
+      rankListElement.innerHTML,
+    ].join(SEPARATOR);
+    localStorage.setItem(saveName, joinedArray);
+  }
 }
 
 function loadTournament(saveName) {
-  const contentOfListHTML = localStorage.getItem(saveName);
-  if (contentOfListHTML) {
-    const splitedList = contentOfListHTML.split(SEPARATOR);
-    // TODO vérifier la longueur de split, qu'il y a bien les éléments
-    matchListElement.innerHTML = splitedList[0];
-    rankListElement.innerHTML = splitedList[1];
+  const localStorageContent = localStorage.getItem(saveName);
+  if (localStorageContent && localStorageContent.includes(SEPARATOR)) {
+    const splitedList = localStorageContent.split(SEPARATOR);
+    if (splitedList.length === 2) {
+      matchListElement.innerHTML = splitedList[0];
+      rankListElement.innerHTML = splitedList[1];
+    }
   }
 }
-// TODO faire des noms de fonctions plus claires => ex. saveInLocalStorage
-function save() {
+
+function saveInLocalStorage() {
   const promptValue = prompt(PROMPT_TEXT);
-  // checkThePromptValue(promptValue);
-  if (promptValue) {
+  if (promptValue && promptValue.trim() != "") {
     saveTournament(promptValue);
   }
 }
 
-function load() {
+function loadFromLocalStorage() {
   const promptValue = prompt(PROMPT_TEXT);
-  //  checkThePromptValue(promptValue);
-  if (promptValue) {
+  if (promptValue && promptValue.trim() != "") {
     loadTournament(promptValue);
   }
 }
 
-function checkThePromptValue(promptValue) {
-  if (promptValue === "") {
-    alert("Please enter a name");
-    return;
-  }
-  // TODO check if null
-}
-
-saveButtonElement.onclick = save;
-loadButtonElement.onclick = load;
+saveButtonElement.onclick = saveInLocalStorage;
+loadButtonElement.onclick = loadFromLocalStorage;
