@@ -33,6 +33,7 @@ function addMatchToMatchList({ teamA, teamB, scoreTeamA, scoreTeamB }) {
     if (winner) {
       updateTeamWins(winner);
     }
+    updateRanksListElement();
   } else {
     alert("Match isn't valid");
   }
@@ -60,23 +61,18 @@ function updateMatchListElement() {
 }
 
 function addTeamsToTeamList({ teamA, teamB }) {
-  if (teamA) {
-    findTeamNameAndPushIt(teamA);
-  }
-  if (teamB) {
-    findTeamNameAndPushIt(teamB);
-  }
+  findTeamNameAndPushIt(teamA);
+  findTeamNameAndPushIt(teamB);
 }
 
 function findTeamNameAndPushIt(teamName) {
-  if (!teamList.find((team) => team.name === teamName)) {
+  if (teamName && !teamList.find((team) => team.name === teamName)) {
     teamList.push({ name: teamName, wins: 0 });
   }
 }
 
 function updateRanksListElement() {
   rankListElement.innerHTML = "";
-
   teamList.forEach((team) => {
     const newRankItem = document.createElement("li");
     const itemText = document.createTextNode(
@@ -92,7 +88,6 @@ function updateTeamWins(winner) {
   teamList[indexOfWinningTeam].wins += 1;
 
   teamList = teamList.sort((teamA, teamB) => teamB.wins - teamA.wins);
-  updateRanksListElement();
 }
 
 formElement.onsubmit = getDataFromForm;

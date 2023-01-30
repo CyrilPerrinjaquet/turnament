@@ -59,12 +59,20 @@ body {
   gap: 4px;
 }
 
-.saveButton {
+.submitButton {
   height: 30px;
   width: 100px;
   margin-top: 6px;
   border-radius: 6px;
   border: none;
+}
+
+.buttonStorageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  gap: 20px;
 }
 
 .inputButtonAndNumbersFields {
