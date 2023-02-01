@@ -2,7 +2,7 @@
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
-const statListElement = document.getElementById("statsOfTheTeams");
+const statsDiv = document.getElementById("stats");
 
 const matchList = [];
 let teamList = [];
@@ -102,18 +102,18 @@ function addMatchToMatchList({
     const winner = getWinner({ teamA, teamB, scoreTeamA, scoreTeamB });
     matchList.push({ teamA, teamB, winner });
     updateMatchListElement();
+    createTableWithTheStatsOfTeamAAndB({
+      teamA,
+      teamB,
+      shotAtGoalTeamA,
+      shotAtGoalTeamB,
+      cornersTeamA,
+      cornersTeamB,
+      ballOutOfPlayTeamA,
+      ballOutOfPlayTeamB,
+    });
     if (winner) {
       updateTeamWins(winner);
-      addAdditionalInformationsToStats({
-        teamA,
-        teamB,
-        shotAtGoalTeamA,
-        shotAtGoalTeamB,
-        cornersTeamA,
-        cornersTeamB,
-        ballOutOfPlayTeamA,
-        ballOutOfPlayTeamB,
-      });
     }
     updateRanksListElement();
   } else {
@@ -204,5 +204,7 @@ function addAdditionalInformationsToStats({
 function getIndexOfWinningTeam(winner) {
   return teamList.findIndex((team) => team.name === winner);
 }
+
+// TODO : faire une fonction qui créée une table avec 2 colonnes 1
 
 formElement.onsubmit = getDataFromForm;

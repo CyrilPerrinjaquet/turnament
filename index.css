@@ -111,11 +111,24 @@ input {
 }
 
 .stats {
-  height: 120px;
+  height: 150px;
 }
 
 li {
   width: 52em;
+}
+
+table,
+th {
+  margin-top: 12px;
+  margin-left: 10px;
+  border: 2px solid black;
+  width: 380px;
+}
+
+td {
+  border: 1px solid black;
+  width: 200px;
 }
 
 h3 {
