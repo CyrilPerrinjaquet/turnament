@@ -1,5 +1,5 @@
 html {
-  height: 100%;
+  height: 110%;
 }
 
 body {
@@ -7,8 +7,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 110%;
   width: 100%;
+}
+
+input {
+  width: 50px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 .mainContainer {
@@ -18,9 +25,8 @@ body {
 }
 
 .titleTurnament {
-  height: 50px;
   text-align: center;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .inputButtonsFieldsMain {
@@ -37,26 +43,36 @@ body {
   margin: 0;
 }
 
-.teamInput {
-  align-self: flex-start;
-  border-radius: 5px;
-  border: none;
-  padding: 2px;
-}
-
-.scoreTeam {
-  width: 50px;
-  border: none;
-  border-radius: 5px;
-}
-
-.inputNumbers {
-  height: 20px;
+.inputNumbersGoals {
+  height: 30px;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  width: 400px;
   gap: 4px;
+}
+
+.inputNumbersCorners,
+.inputNumbersShotAtGoal,
+.inputNumbersGameOutings {
+  height: auto;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 400px;
+  gap: 4px;
+}
+
+.teamInput {
+  align-self: flex-start;
+  width: 160px;
+  border-radius: 5px;
+  border: none;
+  padding: 2px;
 }
 
 .submitButton {
@@ -72,6 +88,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 5px;
+  border: 1px solid black;
   gap: 20px;
 }
 
@@ -85,10 +102,15 @@ body {
 }
 
 .ranks,
-.matchs {
+.matchs,
+.stats {
   border: 1px solid black;
   height: 140px;
   overflow-y: auto;
+}
+
+.stats {
+  height: 120px;
 }
 
 h3 {
@@ -103,7 +125,7 @@ h3 {
   margin: 0;
   margin-bottom: 20px;
   text-align: center;
-  width: 230px;
+  width: 260px;
 }
 
 .listOrder,
