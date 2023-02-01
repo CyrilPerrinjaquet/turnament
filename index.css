@@ -56,7 +56,7 @@ input {
 
 .inputNumbersCorners,
 .inputNumbersShotAtGoal,
-.inputNumbersGameOutings {
+.inputNumbersGameBallOutOfPlay {
   height: auto;
   border: none;
   display: flex;
@@ -107,10 +107,15 @@ input {
   border: 1px solid black;
   height: 140px;
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 .stats {
   height: 120px;
+}
+
+li {
+  width: 52em;
 }
 
 h3 {

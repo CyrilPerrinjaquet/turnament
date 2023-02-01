@@ -6,23 +6,52 @@ const statListElement = document.getElementById("statsOfTheTeams");
 
 const matchList = [];
 let teamList = [];
-// TODO : Juste simplement rajouter les informations dans teamList au lieu de recréer un array
+const inputKeys = [
+  "team",
+  "scoreTeam",
+  "shotAtGoalTeam",
+  "cornersTeam",
+  "ballOutOfPlayTeam",
+];
 //  Exemple Objet TeamList : {name: "un Nom", wins: 2, additionalInformations: {corners: 2, shot: 10, ballOutOfPlay: 15}}
-// TODO : Chercher via l'API du form en JS comment est-ce que je peux faire pour faire un truc plus propre que de faire un ".get" à chaque fois
 function getDataFromForm(event) {
   event.preventDefault();
 
   const dataForm = new FormData(formElement);
-  const teamA = dataForm.get("teamA");
+  let [
+    teamA,
+    teamB,
+    scoreTeamA,
+    scoreTeamB,
+    shotAtGoalTeamA,
+    shotAtGoalTeamB,
+    cornersTeamA,
+    cornersTeamB,
+    ballOutOfPlayTeamA,
+    ballOutOfPlayTeamB,
+  ] = inputKeys.flatMap((key) => [
+    dataForm.get(key + "A"),
+    dataForm.get(key + "B"),
+  ]);
+  scoreTeamA = parseInt(scoreTeamA);
+  scoreTeamB = parseInt(scoreTeamB);
+  shotAtGoalTeamA = parseInt(shotAtGoalTeamA);
+  shotAtGoalTeamB = parseInt(shotAtGoalTeamB);
+  cornersTeamA = parseInt(cornersTeamA);
+  cornersTeamB = parseInt(cornersTeamB);
+  ballOutOfPlayTeamA = parseInt(ballOutOfPlayTeamA);
+  ballOutOfPlayTeamB = parseInt(ballOutOfPlayTeamB);
+
+  /*   const teamA = dataForm.get("teamA");
   const teamB = dataForm.get("teamB");
   const scoreTeamA = parseInt(dataForm.get("scoreTeamA"));
   const scoreTeamB = parseInt(dataForm.get("scoreTeamB"));
-  const shotAtGoalTeamA = dataForm.get("shotAtGoalTeamA");
-  const shotAtGoalTeamB = dataForm.get("shotAtGoalTeamB");
+  const shotAtGoalTeamA = parseInt(dataForm.get("shotAtGoalTeamA"));
+  const shotAtGoalTeamB = parseInt(dataForm.get("shotAtGoalTeamB"));
   const cornersTeamA = parseInt(dataForm.get("cornersTeamA"));
   const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
-  const outingsTeamA = dataForm.get("outingsTeamA");
-  const outingsTeamB = dataForm.get("outingsTeamB");
+  const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
+  const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB")); */
 
   addMatchToMatchList({
     teamA,
@@ -33,8 +62,8 @@ function getDataFromForm(event) {
     shotAtGoalTeamB,
     cornersTeamA,
     cornersTeamB,
-    outingsTeamA,
-    outingsTeamB,
+    ballOutOfPlayTeamA,
+    ballOutOfPlayTeamB,
   });
 }
 
@@ -55,8 +84,8 @@ function addMatchToMatchList({
   shotAtGoalTeamB,
   cornersTeamA,
   cornersTeamB,
-  outingsTeamA,
-  outingsTeamB,
+  ballOutOfPlayTeamA,
+  ballOutOfPlayTeamB,
 }) {
   if (isMatchValid({ teamA, teamB, scoreTeamA, scoreTeamB })) {
     addTeamsToTeamList({ teamA, teamB });
@@ -67,18 +96,26 @@ function addMatchToMatchList({
       shotAtGoalTeamB,
       cornersTeamA,
       cornersTeamB,
-      outingsTeamA,
-      outingsTeamB,
+      ballOutOfPlayTeamA,
+      ballOutOfPlayTeamB,
     });
     const winner = getWinner({ teamA, teamB, scoreTeamA, scoreTeamB });
     matchList.push({ teamA, teamB, winner });
     updateMatchListElement();
     if (winner) {
       updateTeamWins(winner);
+      addAdditionalInformationsToStats({
+        teamA,
+        teamB,
+        shotAtGoalTeamA,
+        shotAtGoalTeamB,
+        cornersTeamA,
+        cornersTeamB,
+        ballOutOfPlayTeamA,
+        ballOutOfPlayTeamB,
+      });
     }
     updateRanksListElement();
-    updateAdditionalInformations(winner);
-    updateStatListElement();
   } else {
     alert("Match isn't valid");
   }
@@ -99,9 +136,7 @@ function updateMatchListElement() {
 
   const newMatchItem = document.createElement("li");
   const itemText = document.createTextNode(
-    `${teamA.substring(0, 11)} VS ${teamB.substring(0, 11)} => ${
-      winner ?? "No winner"
-    }`
+    `${teamA} VS ${teamB} => ${winner ?? "No winner"}`
   );
   newMatchItem.appendChild(itemText);
   matchListElement.appendChild(newMatchItem);
@@ -127,11 +162,7 @@ function updateRanksListElement() {
   teamList.forEach((team) => {
     const newRankItem = document.createElement("li");
     const itemText = document.createTextNode(
-      `${team.name.substring(0, 11)} has ${team.wins} wins, corners : ${
-        team.additionalInformation.corners
-      }, shotAtGoal : ${
-        team.additionalInformation.shotAtGoal
-      }, ballOutOfPlay : ${team.additionalInformation.ballOutOfPlay}`
+      `${team.name} has ${team.wins} wins, corners : ${team.additionalInformation.corners}, shotAtGoal : ${team.additionalInformation.shotAtGoal}, ballOutOfPlay : ${team.additionalInformation.ballOutOfPlay}`
     );
     newRankItem.appendChild(itemText);
     rankListElement.appendChild(newRankItem);
@@ -139,7 +170,7 @@ function updateRanksListElement() {
 }
 
 function updateTeamWins(winner) {
-  const indexOfWinningTeam = teamList.findIndex((team) => team.name === winner);
+  const indexOfWinningTeam = getIndexOfWinningTeam(winner);
   teamList[indexOfWinningTeam].wins += 1;
 
   teamList = teamList.sort((teamA, teamB) => teamB.wins - teamA.wins);
@@ -155,20 +186,23 @@ function addAdditionalInformationsToStats({
   ballOutOfPlayTeamA,
   ballOutOfPlayTeamB,
 }) {
-  // TODO Concept d'isolation
-  let indexOfWinningTeam = teamList.findIndex((team) => team.name === teamA);
+  let indexOfWinningTeam = getIndexOfWinningTeam(teamA);
   teamList[indexOfWinningTeam].additionalInformation.corners += cornersTeamA;
   teamList[indexOfWinningTeam].additionalInformation.shotAtGoal +=
     shotAtGoalTeamA;
   teamList[indexOfWinningTeam].additionalInformation.ballOutOfPlay +=
     ballOutOfPlayTeamA;
 
-  indexOfWinningTeam = teamList.findIndex((team) => team.name === teamB);
+  indexOfWinningTeam = getIndexOfWinningTeam(teamB);
   teamList[indexOfWinningTeam].additionalInformation.corners += cornersTeamB;
   teamList[indexOfWinningTeam].additionalInformation.shotAtGoal +=
     shotAtGoalTeamB;
   teamList[indexOfWinningTeam].additionalInformation.ballOutOfPlay +=
     ballOutOfPlayTeamB;
+}
+
+function getIndexOfWinningTeam(winner) {
+  return teamList.findIndex((team) => team.name === winner);
 }
 
 formElement.onsubmit = getDataFromForm;
