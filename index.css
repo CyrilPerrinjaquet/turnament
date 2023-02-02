@@ -118,20 +118,6 @@ li {
   width: 52em;
 }
 
-table,
-th {
-  margin-top: 12px;
-  margin-left: 10px;
-  border: 2px solid black;
-  width: 450px;
-  text-align: center;
-}
-
-td {
-  border: 1px solid black;
-  width: 200px;
-}
-
 h3 {
   margin: 0;
   width: min-content;
