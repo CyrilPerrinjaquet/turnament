@@ -2,7 +2,24 @@
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
-const statsDiv = document.getElementById("stats");
+// const statsDiv = document.getElementById("stats");
+const teamACellElement = document.getElementById("teamACell");
+const teamBCellElement = document.getElementById("teamBCell");
+const cornersTeamACellElement = document.getElementById("cornersTeamACell");
+const cornersTeamBCellElement = document.getElementById("cornersTeamBCell");
+
+const shotAtGoalTeamACellElement = document.getElementById(
+  "shotAtGoalTeamACell"
+);
+const shotAtGoalTeamBCellElement = document.getElementById(
+  "shotAtGoalTeamBCell"
+);
+const ballOutOfPlayTeamACellElement = document.getElementById(
+  "ballOutOfPlayTeamACell"
+);
+const ballOutOfPlayTeamBCellElement = document.getElementById(
+  "ballOutOfPlayTeamBCell"
+);
 
 const matchList = [];
 let teamList = [];
@@ -102,7 +119,7 @@ function addMatchToMatchList({
     const winner = getWinner({ teamA, teamB, scoreTeamA, scoreTeamB });
     matchList.push({ teamA, teamB, winner });
     updateMatchListElement();
-    createTableWithTheStatsOfTeamAAndB({
+    getAndPlaceTeamIntoStatsTable({
       teamA,
       teamB,
       shotAtGoalTeamA,
@@ -204,6 +221,17 @@ function addAdditionalInformationsToStats({
 function getIndexOfWinningTeam(winner) {
   return teamList.findIndex((team) => team.name === winner);
 }
+
+function getAndPlaceTeamIntoStatsTable({
+  teamA,
+  teamB,
+  shotAtGoalTeamA,
+  shotAtGoalTeamB,
+  cornersTeamA,
+  cornersTeamB,
+  ballOutOfPlayTeamA,
+  ballOutOfPlayTeamB,
+}) {}
 
 // TODO : faire une fonction qui créée une table avec 2 colonnes 1
 

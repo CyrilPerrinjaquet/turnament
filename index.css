@@ -123,7 +123,8 @@ th {
   margin-top: 12px;
   margin-left: 10px;
   border: 2px solid black;
-  width: 380px;
+  width: 450px;
+  text-align: center;
 }
 
 td {
