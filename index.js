@@ -2,6 +2,7 @@
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
+const statsTableElement = document.getElementById("tournamentStats");
 
 const matchList = [];
 let teamList = [];
@@ -199,7 +200,6 @@ formElement.onsubmit = getDataFromForm;
 
 function updateStatsTableElement(list) {
   statsTableElement.innerHTML = "";
-  console.log(list);
   list.forEach(({ name, wins, additionalInformation }) => {
     const newTableRow = document.createElement("tr");
     createRowData(
