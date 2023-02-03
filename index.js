@@ -2,6 +2,17 @@
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
+const statsTableElement = document.getElementById("tournamentStats");
+const tableHeaderNameElement = document.getElementById("tableHeaderName");
+const tableHeaderWinsElement = document.getElementById("tableHeaderCorners");
+const tableHeaderCornersElement = document.getElementById(
+  "tableHeaderShotAtGoal"
+);
+const tableHeaderShotAtGoalElement = document.getElementById(
+  "tableHeaderBallOutOfPlay"
+);
+const tableHeaderBallOutOfPlayElement =
+  document.getElementById("tableHeaderName");
 
 const matchList = [];
 let teamList = [];
@@ -105,6 +116,7 @@ function addMatchToMatchList({
       updateTeamWins(winner);
     }
     updateRanksListElement();
+    updateStatsTableElement(teamList);
   } else {
     alert("Match isn't valid");
   }
@@ -195,3 +207,101 @@ function getIndexOfWinningTeam(winner) {
 }
 
 formElement.onsubmit = getDataFromForm;
+
+function updateStatsTableElement(list) {
+  statsTableElement.innerHTML = "";
+  console.log(list);
+  list.forEach(({ name, wins, additionalInformation }) => {
+    const newTableRow = document.createElement("tr");
+    createRowData(
+      name,
+      wins,
+      additionalInformation.corners,
+      additionalInformation.shotAtGoal,
+      additionalInformation.ballOutOfPlay
+    ).forEach((element) => newTableRow.appendChild(element));
+
+    statsTableElement.appendChild(newTableRow);
+    statsTableElement.onclick;
+  });
+}
+
+function createRowData(...params) {
+  const rowData = [];
+  params.forEach((param) => {
+    const newTableData = document.createElement("td");
+    const itemText = document.createTextNode(`${param}`);
+    newTableData.appendChild(itemText);
+    rowData.push(newTableData);
+  });
+
+  return rowData;
+}
+
+tableHeaderNameElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (teamA.name < teamB.name) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderWinsElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (teamA.wins < teamB.wins) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderCornersElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (
+      teamA.additionalInformation.corners < teamB.additionalInformation.corners
+    ) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderShotAtGoalElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (
+      teamA.additionalInformation.shotAtGoal <
+      teamB.additionalInformation.shotAtGoal
+    ) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderBallOutOfPlayElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (
+      teamA.additionalInformation.ballOutOfPlay <
+      teamB.additionalInformation.ballOutOfPlay
+    ) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
