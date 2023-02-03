@@ -105,6 +105,7 @@ function addMatchToMatchList({
       updateTeamWins(winner);
     }
     updateRanksListElement();
+    updateStatsTableElement(teamList);
   } else {
     alert("Match isn't valid");
   }
@@ -195,3 +196,33 @@ function getIndexOfWinningTeam(winner) {
 }
 
 formElement.onsubmit = getDataFromForm;
+
+function updateStatsTableElement(list) {
+  statsTableElement.innerHTML = "";
+  console.log(list);
+  list.forEach(({ name, wins, additionalInformation }) => {
+    const newTableRow = document.createElement("tr");
+    createRowData(
+      name,
+      wins,
+      additionalInformation.corners,
+      additionalInformation.shotAtGoal,
+      additionalInformation.ballOutOfPlay
+    ).forEach((element) => newTableRow.appendChild(element));
+
+    statsTableElement.appendChild(newTableRow);
+    statsTableElement.onclick;
+  });
+}
+
+function createRowData(...params) {
+  const rowData = [];
+  params.forEach((param) => {
+    const newTableData = document.createElement("td");
+    const itemText = document.createTextNode(`${param}`);
+    newTableData.appendChild(itemText);
+    rowData.push(newTableData);
+  });
+
+  return rowData;
+}
