@@ -140,7 +140,7 @@ function updateRanksListElement() {
   teamList.forEach((team) => {
     const newRankItem = document.createElement("li");
     const itemText = document.createTextNode(
-      `${team.name} has ${team.wins} wins, corners : ${team.additionalInformation.corners}, shotAtGoal : ${team.additionalInformation.shotAtGoal}, ballOutOfPlay : ${team.additionalInformation.ballOutOfPlay}`
+      `${team.name} has ${team.wins} wins`
     );
     newRankItem.appendChild(itemText);
     rankListElement.appendChild(newRankItem);
