@@ -1,5 +1,5 @@
 html {
-  height: 110%;
+  height: 100%;
 }
 
 body {
@@ -7,7 +7,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 110%;
+  height: 100%;
   width: 100%;
 }
 
@@ -54,19 +54,6 @@ input {
   gap: 4px;
 }
 
-.inputNumbersCorners,
-.inputNumbersShotAtGoal,
-.inputNumbersGameBallOutOfPlay {
-  height: auto;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 400px;
-  gap: 4px;
-}
-
 .teamInput {
   align-self: flex-start;
   width: 160px;
@@ -101,17 +88,11 @@ input {
   padding-bottom: 20px;
 }
 
-.ranks,
-.matchs,
-.stats {
+.allInformationsDisplayed {
   border: 1px solid black;
   height: 140px;
   overflow-y: auto;
   overflow-x: auto;
-}
-
-.stats {
-  height: 150px;
 }
 
 li {

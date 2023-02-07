@@ -41,17 +41,6 @@ function getDataFromForm(event) {
   ballOutOfPlayTeamA = parseInt(ballOutOfPlayTeamA);
   ballOutOfPlayTeamB = parseInt(ballOutOfPlayTeamB);
 
-  /*   const teamA = dataForm.get("teamA");
-  const teamB = dataForm.get("teamB");
-  const scoreTeamA = parseInt(dataForm.get("scoreTeamA"));
-  const scoreTeamB = parseInt(dataForm.get("scoreTeamB"));
-  const shotAtGoalTeamA = parseInt(dataForm.get("shotAtGoalTeamA"));
-  const shotAtGoalTeamB = parseInt(dataForm.get("shotAtGoalTeamB"));
-  const cornersTeamA = parseInt(dataForm.get("cornersTeamA"));
-  const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
-  const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
-  const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB")); */
-
   addMatchToMatchList({
     teamA,
     teamB,
