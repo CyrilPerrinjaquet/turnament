@@ -6,6 +6,7 @@ const statsTableElement = document.getElementById("tournamentStats");
 
 const matchList = [];
 let teamList = [];
+
 //  Exemple Objet TeamList : {name: "un Nom", wins: 2, additionalInformations: {corners: 2, shot: 10, ballOutOfPlay: 15}}
 function getDataFromForm(event) {
   event.preventDefault();

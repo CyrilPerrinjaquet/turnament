@@ -8,6 +8,7 @@
 
   <body>
     <section class="mainContainer">
+      <div class="contentContainer">
       <div class="titleTurnament">
         <h1>Tournament</h1>
       </div>
@@ -45,7 +46,6 @@
                 max="150"
                 required
               />
-              <p><strong>/</strong></p>
               <input
                 type="number"
                 name="scoreTeamB"
@@ -129,9 +129,6 @@
         <h3>Matchs</h3>
         <ul id="matchsList" class="listUnOrder"></ul>
       </div>
-      <div class="stats" id="stats">
-        <h3>Stats</h3>
-      </div>
       <div class="buttonStorageDiv">
         <button id="saveStorageButton" class="saveButton">Save</button>
         <button id="loadStorageButton" class="loadButton">Load</button>
@@ -149,6 +146,7 @@
       </thead>
       <tbody id="tournamentStats"></tbody>
     </table>
+    </div>
     <script src="index.js"></script>
     <script src="save.js"></script>
   </body>
