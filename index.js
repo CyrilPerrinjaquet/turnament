@@ -6,43 +6,13 @@ const statsTableElement = document.getElementById("tournamentStats");
 
 const matchList = [];
 let teamList = [];
-const inputKeys = [
-  "team",
-  "scoreTeam",
-  "shotAtGoalTeam",
-  "cornersTeam",
-  "ballOutOfPlayTeam",
-];
 //  Exemple Objet TeamList : {name: "un Nom", wins: 2, additionalInformations: {corners: 2, shot: 10, ballOutOfPlay: 15}}
 function getDataFromForm(event) {
   event.preventDefault();
 
   const dataForm = new FormData(formElement);
-  let [
-    teamA,
-    teamB,
-    scoreTeamA,
-    scoreTeamB,
-    shotAtGoalTeamA,
-    shotAtGoalTeamB,
-    cornersTeamA,
-    cornersTeamB,
-    ballOutOfPlayTeamA,
-    ballOutOfPlayTeamB,
-  ] = inputKeys.flatMap((key) => [
-    dataForm.get(key + "A"),
-    dataForm.get(key + "B"),
-  ]);
-  scoreTeamA = parseInt(scoreTeamA);
-  scoreTeamB = parseInt(scoreTeamB);
-  shotAtGoalTeamA = parseInt(shotAtGoalTeamA);
-  shotAtGoalTeamB = parseInt(shotAtGoalTeamB);
-  cornersTeamA = parseInt(cornersTeamA);
-  cornersTeamB = parseInt(cornersTeamB);
-  ballOutOfPlayTeamA = parseInt(ballOutOfPlayTeamA);
-  ballOutOfPlayTeamB = parseInt(ballOutOfPlayTeamB);
 
-  /*   const teamA = dataForm.get("teamA");
+  const teamA = dataForm.get("teamA");
   const teamB = dataForm.get("teamB");
   const scoreTeamA = parseInt(dataForm.get("scoreTeamA"));
   const scoreTeamB = parseInt(dataForm.get("scoreTeamB"));
@@ -51,7 +21,7 @@ function getDataFromForm(event) {
   const cornersTeamA = parseInt(dataForm.get("cornersTeamA"));
   const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
   const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
-  const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB")); */
+  const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB"));
 
   addMatchToMatchList({
     teamA,
@@ -196,8 +166,6 @@ function getIndexOfWinningTeam(winner) {
   return teamList.findIndex((team) => team.name === winner);
 }
 
-formElement.onsubmit = getDataFromForm;
-
 function updateStatsTableElement(list) {
   statsTableElement.innerHTML = "";
   list.forEach(({ name, wins, additionalInformation }) => {
@@ -226,3 +194,5 @@ function createRowData(...params) {
 
   return rowData;
 }
+
+formElement.onsubmit = getDataFromForm;
