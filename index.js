@@ -12,7 +12,6 @@ function getDataFromForm(event) {
   event.preventDefault();
 
   const dataForm = new FormData(formElement);
-
   const teamA = dataForm.get("teamA");
   const teamB = dataForm.get("teamB");
   const scoreTeamA = parseInt(dataForm.get("scoreTeamA"));
@@ -23,6 +22,7 @@ function getDataFromForm(event) {
   const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
   const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
   const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB"));
+
 
   addMatchToMatchList({
     teamA,
@@ -124,7 +124,7 @@ function updateRanksListElement() {
   teamList.forEach((team) => {
     const newRankItem = document.createElement("li");
     const itemText = document.createTextNode(
-      `${team.name} has ${team.wins} wins, corners : ${team.additionalInformation.corners}, shotAtGoal : ${team.additionalInformation.shotAtGoal}, ballOutOfPlay : ${team.additionalInformation.ballOutOfPlay}`
+      `${team.name} has ${team.wins} wins`
     );
     newRankItem.appendChild(itemText);
     rankListElement.appendChild(newRankItem);
