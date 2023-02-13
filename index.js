@@ -3,6 +3,16 @@ const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
 const statsTableElement = document.getElementById("tournamentStats");
+const tableHeaderNameElement = document.getElementById("tableHeaderName");
+const tableHeaderWinsElement = document.getElementById("tableHeaderCorners");
+const tableHeaderCornersElement = document.getElementById(
+  "tableHeaderShotAtGoal"
+);
+const tableHeaderShotAtGoalElement = document.getElementById(
+  "tableHeaderBallOutOfPlay"
+);
+const tableHeaderBallOutOfPlayElement =
+  document.getElementById("tableHeaderName");
 
 const matchList = [];
 let teamList = [];
@@ -21,7 +31,6 @@ function getDataFromForm(event) {
   const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
   const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
   const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB"));
-
 
   addMatchToMatchList({
     teamA,
@@ -194,5 +203,73 @@ function createRowData(...params) {
 
   return rowData;
 }
+
+tableHeaderNameElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (teamA.name < teamB.name) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderWinsElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (teamA.wins < teamB.wins) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderCornersElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (
+      teamA.additionalInformation.corners < teamB.additionalInformation.corners
+    ) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderShotAtGoalElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (
+      teamA.additionalInformation.shotAtGoal <
+      teamB.additionalInformation.shotAtGoal
+    ) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
+
+tableHeaderBallOutOfPlayElement.onclick = () => {
+  const sorted = teamList.sort((teamA, teamB) => {
+    if (
+      teamA.additionalInformation.ballOutOfPlay <
+      teamB.additionalInformation.ballOutOfPlay
+    ) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  updateStatsTableElement(sorted);
+};
 
 formElement.onsubmit = getDataFromForm;
