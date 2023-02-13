@@ -3,15 +3,20 @@ const PROMPT_TEXT = "Please enter a file name";
 
 const saveButtonElement = document.getElementById("saveStorageButton");
 const loadButtonElement = document.getElementById("loadStorageButton");
+const matchListElementToSave = document.getElementById("matchsList");
+const rankListElementToSave = document.getElementById("ranksList");
+const statsTableElementToSave = document.getElementById("tournamentStats");
 
 function saveTournament(saveName) {
   if (
-    !matchListElement.innerHTML.includes(SEPARATOR) &&
-    !rankListElement.innerHTML.includes(SEPARATOR)
+    !matchListElementToSave.innerHTML.includes(SEPARATOR) &&
+    !rankListElementToSave.innerHTML.includes(SEPARATOR) &&
+    !statsTableElementToSave.innerHTML.includes(SEPARATOR)
   ) {
     const joinedArray = [
-      matchListElement.innerHTML,
-      rankListElement.innerHTML,
+      matchListElementToSave.innerHTML,
+      rankListElementToSave.innerHTML,
+      statsTableElementToSave.innerHTML,
     ].join(SEPARATOR);
     localStorage.setItem(saveName, joinedArray);
   }
@@ -21,9 +26,10 @@ function loadTournament(saveName) {
   const localStorageContent = localStorage.getItem(saveName);
   if (localStorageContent && localStorageContent.includes(SEPARATOR)) {
     const splitedList = localStorageContent.split(SEPARATOR);
-    if (splitedList.length === 2) {
-      matchListElement.innerHTML = splitedList[0];
-      rankListElement.innerHTML = splitedList[1];
+    if (splitedList.length === 3) {
+      matchListElementToSave.innerHTML = splitedList[0];
+      rankListElementToSave.innerHTML = splitedList[1];
+      statsTableElementToSave.innerHTML = splitedList[2];
     }
   }
 }
