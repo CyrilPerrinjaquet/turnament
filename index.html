@@ -9,140 +9,161 @@
   <body>
     <section class="mainContainer">
       <div class="contentContainer">
-      <div class="titleTurnament">
-        <h1>Tournament</h1>
-      </div>
-      <form id="formMatchs">
-        <div class="inputButtonsFieldsMain">
-          <h4 class="teamName">Name of the teams :</h4>
-          <input
-            type="text"
-            name="teamA"
-            id="teamA"
-            class="teamInput"
-            placeholder="Team A"
-            maxlength="32"
-            required
-          />
-          <p>VS</p>
-          <input
-            type="text"
-            name="teamB"
-            id="teamB"
-            class="teamInput"
-            placeholder="Team B"
-            maxlength="32"
-            required
-          />
-          <div class="inputButtonAndNumbersFields">
-            <div class="inputNumbersGoals">
-              <label for="scoreTeamA">Score TeamA</label>
-              <input
-                type="number"
-                name="scoreTeamA"
-                id="scoreTeamA"
-                value="0"
-                min="0"
-                max="150"
-                required
-              />
-              <input
-                type="number"
-                name="scoreTeamB"
-                id="scoreTeamB"
-                value="0"
-                min="0"
-                max="150"
-                required
-              />
-              <label for="scoreTeamB">Score TeamB</label>
-            </div>
-            <div class="inputNumbersShotAtGoal">
-              <label for="shotAtGoalTeamA">Shots at goals TeamA</label>
-              <input
-                type="number"
-                name="shotAtGoalTeamA"
-                id="shotAtGoalTeamA"
-                value="0"
-                min="0"
-                max="40"
-              />
-              <input
-                type="number"
-                name="shotAtGoalTeamB"
-                id="shotAtGoalTeamB"
-                value="0"
-                min="0"
-                max="40"
-              />
-              <label for="shotAtGoalTeamB">Shots at goals TeamB</label>
-            </div>
-            <div class="inputNumbersCorners">
-              <label for="cornersTeamA">Corners TeamA</label>
-              <input
-                type="number"
-                name="cornersTeamA"
-                id="cornersTeamA"
-                value="0"
-                min="0"
-                max="20"
-              />
-              <input
-                type="number"
-                name="cornersTeamB"
-                id="cornersTeamB"
-                value="0"
-                min="0"
-                max="20"
-              />
-              <label for="cornersTeamB">Corners TeamB</label>
-            </div>
-            <div class="inputNumbersGameBallOutOfPlay">
-              <label for="ballOutOfPlayTeamA">Ball out TeamA</label>
-              <input
-                type="number"
-                name="ballOutOfPlayTeamA"
-                value="0"
-                min="0"
-                max="40"
-              />
-              <input
-                type="number"
-                name="ballOutOfPlayTeamB"
-                value="0"
-                max="40"
-                min="0"
-              />
-              <label for="ballOutOfPlayTeamB">Ball out TeamB</label>
-            </div>
-            <div>
-              <button type="submit" class="submitButton">Submit</button>
+        <div class="titleTurnament">
+          <h1>Tournament</h1>
+        </div>
+        <form id="formMatchs">
+          <div class="inputButtonsFieldsMain">
+            <h4 class="teamName">Name of the teams :</h4>
+            <input
+              type="text"
+              name="teamA"
+              id="teamA"
+              class="teamInput"
+              placeholder="Team A"
+              maxlength="32"
+              required
+            />
+            <p>VS</p>
+            <input
+              type="text"
+              name="teamB"
+              id="teamB"
+              class="teamInput"
+              placeholder="Team B"
+              maxlength="32"
+              required
+            />
+            <div class="inputButtonAndNumbersFields">
+              <div class="inputNumbersGoals">
+                <label for="scoreTeamA">Score TeamA</label>
+                <input
+                  type="number"
+                  name="scoreTeamA"
+                  id="scoreTeamA"
+                  value="0"
+                  min="0"
+                  max="150"
+                  required
+                />
+                <input
+                  type="number"
+                  name="scoreTeamB"
+                  id="scoreTeamB"
+                  value="0"
+                  min="0"
+                  max="150"
+                  required
+                />
+                <label for="scoreTeamB">Score TeamB</label>
+              </div>
+              <div class="inputNumbersShotAtGoal">
+                <label for="shotAtGoalTeamA">Shots at goals TeamA</label>
+                <input
+                  type="number"
+                  name="shotAtGoalTeamA"
+                  id="shotAtGoalTeamA"
+                  value="0"
+                  min="0"
+                  max="40"
+                />
+                <input
+                  type="number"
+                  name="shotAtGoalTeamB"
+                  id="shotAtGoalTeamB"
+                  value="0"
+                  min="0"
+                  max="40"
+                />
+                <label for="shotAtGoalTeamB">Shots at goals TeamB</label>
+              </div>
+              <div class="inputNumbersCorners">
+                <label for="cornersTeamA">Corners TeamA</label>
+                <input
+                  type="number"
+                  name="cornersTeamA"
+                  id="cornersTeamA"
+                  value="0"
+                  min="0"
+                  max="20"
+                />
+                <input
+                  type="number"
+                  name="cornersTeamB"
+                  id="cornersTeamB"
+                  value="0"
+                  min="0"
+                  max="20"
+                />
+                <label for="cornersTeamB">Corners TeamB</label>
+              </div>
+              <div class="inputNumbersGameBallOutOfPlay">
+                <label for="ballOutOfPlayTeamA">Ball out TeamA</label>
+                <input
+                  type="number"
+                  name="ballOutOfPlayTeamA"
+                  value="0"
+                  min="0"
+                  max="40"
+                />
+                <input
+                  type="number"
+                  name="ballOutOfPlayTeamB"
+                  value="0"
+                  max="40"
+                  min="0"
+                />
+                <label for="ballOutOfPlayTeamB">Ball out TeamB</label>
+              </div>
+              <div>
+                <button type="submit" class="submitButton">Submit</button>
+              </div>
             </div>
           </div>
+        </form>
+        <div class="allInformationsDisplayed">
+          <h3>Ranks</h3>
+          <ol id="ranksList" class="listOrder"></ol>
         </div>
-      </form>
-      <div class="allInformationsDisplayed">
-        <h3>Ranks</h3>
-        <ol id="ranksList" class="listOrder"></ol>
-      </div>
-      <div class="allInformationsDisplayed">
-        <h3>Matchs</h3>
-        <ul id="matchsList" class="listUnOrder"></ul>
-      </div>
-      <div class="buttonStorageDiv">
-        <button id="saveStorageButton" class="saveButton">Save</button>
-        <button id="loadStorageButton" class="loadButton">Load</button>
+        <div class="allInformationsDisplayed">
+          <h3>Matchs</h3>
+          <ul id="matchsList" class="listUnOrder"></ul>
+        </div>
+        <div class="buttonStorageDiv">
+          <button id="saveStorageButton" class="saveButton">Save</button>
+          <button id="loadStorageButton" class="loadButton">Load</button>
+        </div>
       </div>
     </section>
-    </div>
     <table>
       <thead>
         <tr>
-          <th id="tableHeaderName">Name</th>
-          <th id="tableHeaderWins">Wins</th>
-          <th id="tableHeaderCorners">Corners</th>
-          <th id="tableHeaderShotAtGoal">shotAtGoal</th>
-          <th id="tableHeaderBallOutOfPlay">ballOutOfPlay</th>
+          <th>
+            <button id="tableHeaderName" class="buttonOfTheHeaderInTable">
+              Name
+            </button>
+          </th>
+          <th id="tableHeaderWins">
+            <button class="buttonOfTheHeaderInTable">Wins</button>
+          </th>
+          <th>
+            <button id="tableHeaderCorners" class="buttonOfTheHeaderInTable">
+              Corners
+            </button>
+          </th>
+          <th>
+            <button id="tableHeaderShotAtGoal" class="buttonOfTheHeaderInTable">
+              shotAtGoal
+            </button>
+          </th>
+          <th>
+            <button
+              id="tableHeaderBallOutOfPlay"
+              class="buttonOfTheHeaderInTable"
+            >
+              ballOutOfPlay
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody id="tournamentStats"></tbody>

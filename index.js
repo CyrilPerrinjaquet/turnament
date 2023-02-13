@@ -4,15 +4,14 @@ const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
 const statsTableElement = document.getElementById("tournamentStats");
 const tableHeaderNameElement = document.getElementById("tableHeaderName");
-const tableHeaderWinsElement = document.getElementById("tableHeaderCorners");
-const tableHeaderCornersElement = document.getElementById(
+const tableHeaderWinsElement = document.getElementById("tableHeaderWins");
+const tableHeaderCornersElement = document.getElementById("tableHeaderCorners");
+const tableHeaderShotAtGoalElement = document.getElementById(
   "tableHeaderShotAtGoal"
 );
-const tableHeaderShotAtGoalElement = document.getElementById(
+const tableHeaderBallOutOfPlayElement = document.getElementById(
   "tableHeaderBallOutOfPlay"
 );
-const tableHeaderBallOutOfPlayElement =
-  document.getElementById("tableHeaderName");
 
 const matchList = [];
 let teamList = [];
@@ -208,6 +207,8 @@ tableHeaderNameElement.onclick = () => {
   const sorted = teamList.sort((teamA, teamB) => {
     if (teamA.name < teamB.name) {
       return -1;
+    } else if (teamA.name === teamB.name) {
+      return 0;
     } else {
       return 1;
     }
@@ -220,6 +221,8 @@ tableHeaderWinsElement.onclick = () => {
   const sorted = teamList.sort((teamA, teamB) => {
     if (teamA.wins < teamB.wins) {
       return 1;
+    } else if (teamA.wins === teamB.wins) {
+      return 0;
     } else {
       return -1;
     }
@@ -234,6 +237,11 @@ tableHeaderCornersElement.onclick = () => {
       teamA.additionalInformation.corners < teamB.additionalInformation.corners
     ) {
       return 1;
+    } else if (
+      teamA.additionalInformation.corners ===
+      teamB.additionalInformation.corners
+    ) {
+      return 0;
     } else {
       return -1;
     }
@@ -249,6 +257,11 @@ tableHeaderShotAtGoalElement.onclick = () => {
       teamB.additionalInformation.shotAtGoal
     ) {
       return 1;
+    } else if (
+      teamA.additionalInformation.shotAtGoal ===
+      teamB.additionalInformation.shotAtGoal
+    ) {
+      return 0;
     } else {
       return -1;
     }
@@ -264,11 +277,15 @@ tableHeaderBallOutOfPlayElement.onclick = () => {
       teamB.additionalInformation.ballOutOfPlay
     ) {
       return 1;
+    } else if (
+      teamA.additionalInformation.ballOutOfPlay ===
+      teamB.additionalInformation.ballOutOfPlay
+    ) {
+      return 0;
     } else {
       return -1;
     }
   });
-
   updateStatsTableElement(sorted);
 };
 

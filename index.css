@@ -130,6 +130,15 @@ h3 {
   font-weight: bold;
 }
 
+.buttonOfTheHeaderInTable {
+  border: none;
+  background-color: white;
+  font-weight: bold;
+  font-family:'Times New Roman', Times, serif;
+  font-size: 1em;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
   .mainContainer {
     width: 260px;
