@@ -13,17 +13,14 @@ input {
   margin-top: 10px;
 }
 
-table,
-th {
-  margin-top: 12px;
-  margin-left: 10px;
-  border: 2px solid black;
-  width: 700px;
-  text-align: center;
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
-td {
-  border: 1px solid black;
+th > button {
+  border: none;
+  background-color: white;
 }
 
 li {
@@ -128,15 +125,6 @@ h3 {
   padding-top: 5px;
   padding-left: 35px;
   font-weight: bold;
-}
-
-.buttonOfTheHeaderInTable {
-  border: none;
-  background-color: white;
-  font-weight: bold;
-  font-family:'Times New Roman', Times, serif;
-  font-size: 1em;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {

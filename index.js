@@ -1,8 +1,15 @@
+// ELEMENTS
 // This the part of HTML, we retrieve the id of the form element and the id of the match list
+// This is the part of retrieving the form, list of match and the list of rank
+
 const formElement = document.getElementById("formMatchs");
 const matchListElement = document.getElementById("matchsList");
 const rankListElement = document.getElementById("ranksList");
+// This the part of retrieving the stats
+
 const statsTableElement = document.getElementById("tournamentStats");
+// Each of the variables below are related to the sorting of each attribute in the HTML Table
+
 const tableHeaderNameElement = document.getElementById("tableHeaderName");
 const tableHeaderWinsElement = document.getElementById("tableHeaderWins");
 const tableHeaderCornersElement = document.getElementById("tableHeaderCorners");
@@ -13,37 +20,14 @@ const tableHeaderBallOutOfPlayElement = document.getElementById(
   "tableHeaderBallOutOfPlay"
 );
 
+/*
+ *******************
+ *VARIABLES*
+ *******************
+ */
+
 const matchList = [];
 let teamList = [];
-//  Exemple Objet TeamList : {name: "un Nom", wins: 2, additionalInformations: {corners: 2, shot: 10, ballOutOfPlay: 15}}
-function getDataFromForm(event) {
-  event.preventDefault();
-
-  const dataForm = new FormData(formElement);
-  const teamA = dataForm.get("teamA");
-  const teamB = dataForm.get("teamB");
-  const scoreTeamA = parseInt(dataForm.get("scoreTeamA"));
-  const scoreTeamB = parseInt(dataForm.get("scoreTeamB"));
-  const shotAtGoalTeamA = parseInt(dataForm.get("shotAtGoalTeamA"));
-  const shotAtGoalTeamB = parseInt(dataForm.get("shotAtGoalTeamB"));
-  const cornersTeamA = parseInt(dataForm.get("cornersTeamA"));
-  const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
-  const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
-  const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB"));
-
-  addMatchToMatchList({
-    teamA,
-    teamB,
-    scoreTeamA,
-    scoreTeamB,
-    shotAtGoalTeamA,
-    shotAtGoalTeamB,
-    cornersTeamA,
-    cornersTeamB,
-    ballOutOfPlayTeamA,
-    ballOutOfPlayTeamB,
-  });
-}
 
 function isMatchValid({ teamA, teamB }) {
   return !(
@@ -52,6 +36,12 @@ function isMatchValid({ teamA, teamB }) {
     teamA.toLowerCase() === teamB.toLowerCase()
   );
 }
+
+/*
+ *******************
+ *TURNAMENT FUNCTIONS*
+ *******************
+ */
 
 function addMatchToMatchList({
   teamA,
@@ -100,17 +90,6 @@ function getWinner({ teamA, teamB, scoreTeamA, scoreTeamB }) {
   return winner;
 }
 
-function updateMatchListElement() {
-  const { teamA, teamB, winner } = matchList[matchList.length - 1];
-
-  const newMatchItem = document.createElement("li");
-  const itemText = document.createTextNode(
-    `${teamA} VS ${teamB} => ${winner ?? "No winner"}`
-  );
-  newMatchItem.appendChild(itemText);
-  matchListElement.appendChild(newMatchItem);
-}
-
 function addTeamsToTeamList({ teamA, teamB }) {
   findTeamNameAndPushIt(teamA);
   findTeamNameAndPushIt(teamB);
@@ -124,25 +103,6 @@ function findTeamNameAndPushIt(teamName) {
       additionalInformation: { corners: 0, ballOutOfPlay: 0, shotAtGoal: 0 },
     });
   }
-}
-
-function updateRanksListElement() {
-  rankListElement.innerHTML = "";
-  teamList.forEach((team) => {
-    const newRankItem = document.createElement("li");
-    const itemText = document.createTextNode(
-      `${team.name} has ${team.wins} wins`
-    );
-    newRankItem.appendChild(itemText);
-    rankListElement.appendChild(newRankItem);
-  });
-}
-
-function updateTeamWins(winner) {
-  const indexOfWinningTeam = getIndexOfWinningTeam(winner);
-  teamList[indexOfWinningTeam].wins += 1;
-
-  teamList = teamList.sort((teamA, teamB) => teamB.wins - teamA.wins);
 }
 
 function addAdditionalInformationsToStats({
@@ -174,6 +134,23 @@ function getIndexOfWinningTeam(winner) {
   return teamList.findIndex((team) => team.name === winner);
 }
 
+/*
+ *******************
+ *ELEMENT UPDATE FUNCTIONS*
+ *******************
+ */
+
+function updateMatchListElement() {
+  const { teamA, teamB, winner } = matchList[matchList.length - 1];
+
+  const newMatchItem = document.createElement("li");
+  const itemText = document.createTextNode(
+    `${teamA} VS ${teamB} => ${winner ?? "No winner"}`
+  );
+  newMatchItem.appendChild(itemText);
+  matchListElement.appendChild(newMatchItem);
+}
+
 function updateStatsTableElement(list) {
   statsTableElement.innerHTML = "";
   list.forEach(({ name, wins, additionalInformation }) => {
@@ -191,6 +168,18 @@ function updateStatsTableElement(list) {
   });
 }
 
+function updateRanksListElement() {
+  rankListElement.innerHTML = "";
+  teamList.forEach((team) => {
+    const newRankItem = document.createElement("li");
+    const itemText = document.createTextNode(
+      `${team.name} has ${team.wins} wins`
+    );
+    newRankItem.appendChild(itemText);
+    rankListElement.appendChild(newRankItem);
+  });
+}
+
 function createRowData(...params) {
   const rowData = [];
   params.forEach((param) => {
@@ -203,90 +192,129 @@ function createRowData(...params) {
   return rowData;
 }
 
-tableHeaderNameElement.onclick = () => {
-  const sorted = teamList.sort((teamA, teamB) => {
-    if (teamA.name < teamB.name) {
-      return -1;
-    } else if (teamA.name === teamB.name) {
-      return 0;
-    } else {
-      return 1;
-    }
+/*
+ *******************
+ *SORTING FUNCTIONS*
+ *******************
+ */
+
+function updateTeamWins(winner) {
+  const indexOfWinningTeam = getIndexOfWinningTeam(winner);
+  teamList[indexOfWinningTeam].wins += 1;
+
+  teamList = teamList.sort((teamA, teamB) => teamB.wins - teamA.wins);
+}
+
+function sortTableColumn(attribute, reverseOrder) {
+  updateStatsTableElement(
+    teamList.sort((teamA, teamB) =>
+      getSortValue(teamA[attribute], teamB[attribute], reverseOrder)
+    )
+  );
+}
+
+function sortTableColumnMultipleAttribute(
+  attribute1,
+  attribute2,
+  reverseOrder
+) {
+  updateStatsTableElement(
+    teamList.sort((teamA, teamB) =>
+      getSortValue(
+        teamA[attribute1][attribute2],
+        teamB[attribute1][attribute2],
+        reverseOrder
+      )
+    )
+  );
+}
+
+/**
+ * ! This function get the result of the comparted values and return -1, 0 or 1. 
+ * It is like the Array.prototype.sort function
+ * @param {number | string} value1
+ * @param {number | string} value2
+ * @param {Boolean} reverseOrder
+ * @returns
+ */
+function getSortValue(value1, value2, reverseOrder) {
+  if (value1 > value2) {
+    return reverseOrder ? -1 : 1;
+  } else if (value1 === value2) {
+    return 0;
+  } else {
+    return reverseOrder ? 1 : -1;
+  }
+}
+
+/*
+ *******************
+ *EVENT HANDLERS*
+ *******************
+ */
+
+function onTableClickName() {
+  sortTableColumn("name", false);
+}
+
+function onTableClickWins() {
+  sortTableColumn("wins", true);
+}
+
+function onTableClickCorners() {
+  sortTableColumnMultipleAttribute("additionalInformation", "corners", true);
+}
+
+function onTableClickShotAtGoal() {
+  sortTableColumnMultipleAttribute("additionalInformation", "shotAtGoal", true);
+}
+
+function onTableClickBallOutOfPlay() {
+  sortTableColumnMultipleAttribute(
+    "additionalInformation",
+    "ballOutOfPlay",
+    true
+  );
+}
+
+function getDataFromForm(event) {
+  event.preventDefault();
+
+  const dataForm = new FormData(formElement);
+  const teamA = dataForm.get("teamA");
+  const teamB = dataForm.get("teamB");
+  const scoreTeamA = parseInt(dataForm.get("scoreTeamA"));
+  const scoreTeamB = parseInt(dataForm.get("scoreTeamB"));
+  const shotAtGoalTeamA = parseInt(dataForm.get("shotAtGoalTeamA"));
+  const shotAtGoalTeamB = parseInt(dataForm.get("shotAtGoalTeamB"));
+  const cornersTeamA = parseInt(dataForm.get("cornersTeamA"));
+  const cornersTeamB = parseInt(dataForm.get("cornersTeamB"));
+  const ballOutOfPlayTeamA = parseInt(dataForm.get("ballOutOfPlayTeamA"));
+  const ballOutOfPlayTeamB = parseInt(dataForm.get("ballOutOfPlayTeamB"));
+
+  addMatchToMatchList({
+    teamA,
+    teamB,
+    scoreTeamA,
+    scoreTeamB,
+    shotAtGoalTeamA,
+    shotAtGoalTeamB,
+    cornersTeamA,
+    cornersTeamB,
+    ballOutOfPlayTeamA,
+    ballOutOfPlayTeamB,
   });
+}
 
-  updateStatsTableElement(sorted);
-};
+/*
+ *******************
+ *EVENTS*
+ *******************
+ */
 
-tableHeaderWinsElement.onclick = () => {
-  const sorted = teamList.sort((teamA, teamB) => {
-    if (teamA.wins < teamB.wins) {
-      return 1;
-    } else if (teamA.wins === teamB.wins) {
-      return 0;
-    } else {
-      return -1;
-    }
-  });
-
-  updateStatsTableElement(sorted);
-};
-
-tableHeaderCornersElement.onclick = () => {
-  const sorted = teamList.sort((teamA, teamB) => {
-    if (
-      teamA.additionalInformation.corners < teamB.additionalInformation.corners
-    ) {
-      return 1;
-    } else if (
-      teamA.additionalInformation.corners ===
-      teamB.additionalInformation.corners
-    ) {
-      return 0;
-    } else {
-      return -1;
-    }
-  });
-
-  updateStatsTableElement(sorted);
-};
-
-tableHeaderShotAtGoalElement.onclick = () => {
-  const sorted = teamList.sort((teamA, teamB) => {
-    if (
-      teamA.additionalInformation.shotAtGoal <
-      teamB.additionalInformation.shotAtGoal
-    ) {
-      return 1;
-    } else if (
-      teamA.additionalInformation.shotAtGoal ===
-      teamB.additionalInformation.shotAtGoal
-    ) {
-      return 0;
-    } else {
-      return -1;
-    }
-  });
-
-  updateStatsTableElement(sorted);
-};
-
-tableHeaderBallOutOfPlayElement.onclick = () => {
-  const sorted = teamList.sort((teamA, teamB) => {
-    if (
-      teamA.additionalInformation.ballOutOfPlay <
-      teamB.additionalInformation.ballOutOfPlay
-    ) {
-      return 1;
-    } else if (
-      teamA.additionalInformation.ballOutOfPlay ===
-      teamB.additionalInformation.ballOutOfPlay
-    ) {
-      return 0;
-    } else {
-      return -1;
-    }
-  });
-  updateStatsTableElement(sorted);
-};
-
+tableHeaderWinsElement.onclick = onTableClickWins;
+tableHeaderCornersElement.onclick = onTableClickCorners;
+tableHeaderShotAtGoalElement.onclick = onTableClickShotAtGoal;
+tableHeaderBallOutOfPlayElement.onclick = onTableClickBallOutOfPlay;
+tableHeaderNameElement.onclick = onTableClickName;
 formElement.onsubmit = getDataFromForm;
