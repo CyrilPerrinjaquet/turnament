@@ -1,7 +1,7 @@
 /*
- *******************
+ **********
  *ELEMENTS*
- *******************
+ **********
  */
 // This the part of HTML, we retrieve the id of the form element and the id of the match list
 // This is the part of retrieving the form, list of match and the list of rank
@@ -25,18 +25,18 @@ const tableHeaderBallOutOfPlayElement = document.getElementById(
 );
 
 /*
- *******************
+ ***********
  *VARIABLES*
- *******************
+ ***********
  */
 
 const matchList = [];
 let teamList = [];
 
 /*
- *******************
+ *********************
  *TURNAMENT FUNCTIONS*
- *******************
+ *********************
  */
 
 /**
@@ -200,9 +200,9 @@ function getIndexOfWinningTeam(winner) {
 }
 
 /*
- *******************
+ **************************
  *ELEMENT UPDATE FUNCTIONS*
- *******************
+ **************************
  */
 
 /**
@@ -368,9 +368,9 @@ function getSortValue(value1, value2, reverseOrder) {
 }
 
 /*
- *******************
+ ****************
  *EVENT HANDLERS*
- *******************
+ ****************
  */
 
 /**
@@ -417,7 +417,7 @@ function onTableClickBallOutOfPlay() {
  * * Creates a FormData based on the formElement id in the HTML and stores it in a variable
  * * Retrieve all the values of the form and stores it all in variables
  * * Calls the function addMatchToMatchList with the parameters associated with variables with defined before
- * @param {SubmitEvent} event 
+ * @param {SubmitEvent} event
  */
 function getDataFromForm(event) {
   event.preventDefault();
@@ -449,14 +449,24 @@ function getDataFromForm(event) {
 }
 
 /*
- *******************
- *EVENTS*
- *******************
+ ****************
+ *EVENT FUNCTION*
+ ****************
  */
 
-tableHeaderWinsElement.onclick = onTableClickWins;
-tableHeaderCornersElement.onclick = onTableClickCorners;
-tableHeaderShotAtGoalElement.onclick = onTableClickShotAtGoal;
-tableHeaderBallOutOfPlayElement.onclick = onTableClickBallOutOfPlay;
-tableHeaderNameElement.onclick = onTableClickName;
-formElement.onsubmit = getDataFromForm;
+function tournament() {
+  tableHeaderWinsElement.onclick = onTableClickWins;
+  tableHeaderCornersElement.onclick = onTableClickCorners;
+  tableHeaderShotAtGoalElement.onclick = onTableClickShotAtGoal;
+  tableHeaderBallOutOfPlayElement.onclick = onTableClickBallOutOfPlay;
+  tableHeaderNameElement.onclick = onTableClickName;
+  formElement.onsubmit = getDataFromForm;
+}
+
+/*
+ **************************
+ *MAIN TOURNAMENT FUNCTION*
+ **************************
+ */
+
+tournament();
