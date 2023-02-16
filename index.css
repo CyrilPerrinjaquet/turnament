@@ -1,0 +1,35 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+body > div {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+main > div {
+  height: 100%;
+  border-right: 2px solid black;
+}
+
+@media screen and (max-width: 440px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+   body > div {
+    justify-content: center;
+  }
+}
