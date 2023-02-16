@@ -5,16 +5,16 @@
     <link rel="stylesheet" href="index.css" />
     <title>Tournament</title>
   </head>
-
   <body>
-    <section class="mainContainer">
-      <div class="contentContainer">
-        <div class="titleTurnament">
+    <main>
+      <!-- Il faudra utiliser CSS grid -->
+      <div>
+        <div>
           <h1>Tournament</h1>
         </div>
         <form id="formMatchs">
-          <div class="inputButtonsFieldsMain">
-            <h4 class="teamName">Name of the teams :</h4>
+          <div>
+            <h4>Name of the teams :</h4>
             <input
               type="text"
               name="teamA"
@@ -34,8 +34,8 @@
               maxlength="32"
               required
             />
-            <div class="inputButtonAndNumbersFields">
-              <div class="inputNumbersGoals">
+            <div>
+              <div>
                 <label for="scoreTeamA">Score TeamA</label>
                 <input
                   type="number"
@@ -57,7 +57,7 @@
                 />
                 <label for="scoreTeamB">Score TeamB</label>
               </div>
-              <div class="inputNumbersShotAtGoal">
+              <div>
                 <label for="shotAtGoalTeamA">Shots at goals TeamA</label>
                 <input
                   type="number"
@@ -77,7 +77,7 @@
                 />
                 <label for="shotAtGoalTeamB">Shots at goals TeamB</label>
               </div>
-              <div class="inputNumbersCorners">
+              <div>
                 <label for="cornersTeamA">Corners TeamA</label>
                 <input
                   type="number"
@@ -97,7 +97,7 @@
                 />
                 <label for="cornersTeamB">Corners TeamB</label>
               </div>
-              <div class="inputNumbersGameBallOutOfPlay">
+              <div>
                 <label for="ballOutOfPlayTeamA">Ball out TeamA</label>
                 <input
                   type="number"
@@ -116,48 +116,50 @@
                 <label for="ballOutOfPlayTeamB">Ball out TeamB</label>
               </div>
               <div>
-                <button type="submit" class="submitButton">Submit</button>
+                <button type="submit">Submit</button>
               </div>
             </div>
           </div>
         </form>
-        <div class="allInformationsDisplayed">
+        <div>
           <h3>Ranks</h3>
-          <ol id="ranksList" class="listOrder"></ol>
+          <ol id="ranksList"></ol>
         </div>
-        <div class="allInformationsDisplayed">
+        <div>
           <h3>Matchs</h3>
-          <ul id="matchsList" class="listUnOrder"></ul>
-        </div>
-        <div class="buttonStorageDiv">
-          <button id="saveStorageButton" class="saveButton">Save</button>
-          <button id="loadStorageButton" class="loadButton">Load</button>
+          <ul id="matchsList"></ul>
         </div>
       </div>
-    </section>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            <button id="tableHeaderName">Name</button>
-          </th>
-          <th> 
-            <button id="tableHeaderWins">Wins</button>
-          </th>
-          <th>
-            <button id="tableHeaderCorners">Corners</button>
-          </th>
-          <th>
-            <button id="tableHeaderShotAtGoal">shotAtGoal</button>
-          </th>
-          <th>
-            <button id="tableHeaderBallOutOfPlay">ballOutOfPlay</button>
-          </th>
-        </tr>
-      </thead>
-      <tbody id="tournamentStats"></tbody>
-    </table>
-    <script src="index.js"></script>
-    <script src="save.js"></script>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <button id="tableHeaderName">Name</button>
+              </th>
+              <th>
+                <button id="tableHeaderWins">Wins</button>
+              </th>
+              <th>
+                <button id="tableHeaderCorners">Corners</button>
+              </th>
+              <th>
+                <button id="tableHeaderShotAtGoal">shotAtGoal</button>
+              </th>
+              <th>
+                <button id="tableHeaderBallOutOfPlay">ballOutOfPlay</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="tournamentStats"></tbody>
+        </table>
+      </div>
+    </main>
+    <div>
+      <button id="saveStorageButton">Save</button>
+      <button id="loadStorageButton">Load</button>
+    </div>
   </body>
+  <script src="index.js"></script>
+  <script src="save.js"></script>
 </html>
