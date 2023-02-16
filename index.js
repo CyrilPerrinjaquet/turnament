@@ -354,8 +354,8 @@ function sortTableColumnMultipleAttribute(
  * * If reverseOrder is true = -1 else 1 then we do like the Array.prototype.sort function
  * @param {number | string} value1
  * @param {number | string} value2
- * @param {Boolean} reverseOrder
- * @returns {boolean}
+ * @param {boolean} reverseOrder
+ * @returns {number}
  */
 function getSortValue(value1, value2, reverseOrder) {
   if (value1 > value2) {
