@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #f9fafb;
 }
 
 main {
@@ -20,26 +21,52 @@ body > div {
 }
 
 main > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   height: 100%;
   border-right: 1px solid black;
 }
 
-div h1, h4 {
-  text-align: center;
-}
-
-form > div  {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid black;
-}
-
-div:first-child {
-    border: 2px solid black;
-}
-
 input {
-    width: 100px;
+  min-width: 50px;
+  border: 2px solid transparent;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  transition: border-color 0.8s;
+  margin: 0 8px;
+}
+
+input:hover {
+  background-color: #d1d5db;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+button:hover {
+  background-color: #d1d5db;
+}
+
+form > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form > div:first-child {
+  flex-direction: column;
+}
+
+h4 ~ input {
+  min-width: 150px;
 }
 
 @media screen and (max-width: 440px) {
