@@ -25,7 +25,6 @@ main > div {
   align-items: center;
   flex-direction: column;
   height: 100%;
-  border-right: 1px solid black;
 }
 
 div > div:nth-child(3) {
@@ -87,6 +86,26 @@ h4 ~ input {
   min-width: 150px;
 }
 
+main > div:nth-child(2) {
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+table button {
+  background-color: #f9fafb;
+  border-radius: 0px;
+}
+
+table button:hover {
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 440px) {
   main {
     grid-template-columns: 1fr;
@@ -106,10 +125,18 @@ h4 ~ input {
     font-size: 1em;
   }
 
+  main > div:nth-child(2) {
+    overflow-x: scroll;
+  }
+
+  td {
+    max-width: 20px
+  }
+
   div > div:nth-child(4) {
     max-width: 145vw;
   }
-  
+
   label {
     font-size: 1.5em;
   }
