@@ -28,6 +28,24 @@ main > div {
   border-right: 1px solid black;
 }
 
+div > div:nth-child(3) {
+  align-self: flex-start;
+  padding-left: 20px;
+  height: 140px;
+  overflow-y: auto;
+  overflow-x: auto;
+  max-width: 400px;
+}
+
+div > div:nth-child(4) {
+  align-self: flex-start;
+  padding-left: 20px;
+  height: 150px;
+  overflow-y: auto;
+  overflow-x: auto;
+  max-width: 600px;
+}
+
 input {
   min-width: 50px;
   border: 2px solid transparent;
@@ -77,4 +95,23 @@ h4 ~ input {
   body > div {
     justify-content: center;
   }
+
+  h2 ~ input {
+    font-size: 1.2em;
+    height: 4.2vh;
+  }
+ 
+  input {
+    height: 3vh;
+    font-size: 1em;
+  }
+
+  div > div:nth-child(4) {
+    max-width: 145vw;
+  }
+  
+  label {
+    font-size: 1.5em;
+  }
+  
 }
