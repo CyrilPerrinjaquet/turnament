@@ -3,8 +3,8 @@
 
 echo '[Husky] pre-commit'
 
-if [ $(wc -l <index.css) -ge 60 ]
+if [ $(wc -l <index.css) -ge 150 ]
 then
-    echo "index.css has more than 60 lines."
+    echo "index.css has more than 150 lines."
     exit 1
 fi

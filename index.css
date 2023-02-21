@@ -82,7 +82,7 @@ form > div:first-child {
   flex-direction: column;
 }
 
-h4 ~ input {
+h2 ~ input {
   min-width: 150px;
 }
 
@@ -91,7 +91,9 @@ main > div:nth-child(2) {
   padding-bottom: 30px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 2px solid black;
   border-collapse: collapse;
 }
@@ -119,7 +121,7 @@ table button:hover {
     font-size: 1.2em;
     height: 4.2vh;
   }
- 
+
   input {
     height: 3vh;
     font-size: 1em;
@@ -129,10 +131,6 @@ table button:hover {
     overflow-x: scroll;
   }
 
-  td {
-    max-width: 20px
-  }
-
   div > div:nth-child(4) {
     max-width: 145vw;
   }
@@ -140,5 +138,4 @@ table button:hover {
   label {
     font-size: 1.5em;
   }
-  
 }
