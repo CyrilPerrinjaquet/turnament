@@ -86,11 +86,6 @@ h2 ~ input {
   min-width: 150px;
 }
 
-.tournament-table-container {
-  margin-top: 20px;
-  padding-bottom: 30px;
-}
-
 table,
 th,
 td {
@@ -108,6 +103,18 @@ table button:hover {
   cursor: pointer;
 }
 
+.tournament-table-container {
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.tournament-container-buttons {
+  margin: 30px 20px;
+  border-radius: 1rem;
+  padding: 4px;
+  background-color: #f3f4f6;
+}
+
 @media screen and (max-width: 440px) {
   main {
     grid-template-columns: 1fr;
@@ -115,6 +122,11 @@ table button:hover {
 
   body > div {
     justify-content: center;
+  }
+
+  .tournament-container-buttons {
+    margin: 0;
+    border: none;
   }
 
   h2 ~ input {
@@ -133,7 +145,6 @@ table button:hover {
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: auto;
-    height: 100%;
   }
 
   label {
