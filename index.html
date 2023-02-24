@@ -7,14 +7,13 @@
   </head>
   <body>
     <main>
-      <!-- Il faudra utiliser CSS grid -->
       <div>
         <div>
           <h1>Tournament</h1>
         </div>
         <form id="formMatchs">
           <div>
-            <h4>Name of the teams :</h4>
+            <h2>Name of the teams :</h2>
             <input
               type="text"
               name="teamA"
@@ -34,98 +33,100 @@
               maxlength="32"
               required
             />
-            <div>
-              <div>
-                <label for="scoreTeamA">Score TeamA</label>
-                <input
-                  type="number"
-                  name="scoreTeamA"
-                  id="scoreTeamA"
-                  value="0"
-                  min="0"
-                  max="150"
-                  required
-                />
-                <input
-                  type="number"
-                  name="scoreTeamB"
-                  id="scoreTeamB"
-                  value="0"
-                  min="0"
-                  max="150"
-                  required
-                />
-                <label for="scoreTeamB">Score TeamB</label>
-              </div>
-              <div>
-                <label for="shotAtGoalTeamA">Shots at goals TeamA</label>
-                <input
-                  type="number"
-                  name="shotAtGoalTeamA"
-                  id="shotAtGoalTeamA"
-                  value="0"
-                  min="0"
-                  max="40"
-                />
-                <input
-                  type="number"
-                  name="shotAtGoalTeamB"
-                  id="shotAtGoalTeamB"
-                  value="0"
-                  min="0"
-                  max="40"
-                />
-                <label for="shotAtGoalTeamB">Shots at goals TeamB</label>
-              </div>
-              <div>
-                <label for="cornersTeamA">Corners TeamA</label>
-                <input
-                  type="number"
-                  name="cornersTeamA"
-                  id="cornersTeamA"
-                  value="0"
-                  min="0"
-                  max="20"
-                />
-                <input
-                  type="number"
-                  name="cornersTeamB"
-                  id="cornersTeamB"
-                  value="0"
-                  min="0"
-                  max="20"
-                />
-                <label for="cornersTeamB">Corners TeamB</label>
-              </div>
-              <div>
-                <label for="ballOutOfPlayTeamA">Ball out TeamA</label>
-                <input
-                  type="number"
-                  name="ballOutOfPlayTeamA"
-                  value="0"
-                  min="0"
-                  max="40"
-                />
-                <input
-                  type="number"
-                  name="ballOutOfPlayTeamB"
-                  value="0"
-                  max="40"
-                  min="0"
-                />
-                <label for="ballOutOfPlayTeamB">Ball out TeamB</label>
-              </div>
-              <div>
-                <button type="submit">Submit</button>
-              </div>
-            </div>
+          </div>
+          <h3>Score of the teams : </h3>
+          <div>
+            <label for="scoreTeamA">A</label>
+            <input
+              type="number"
+              name="scoreTeamA"
+              id="scoreTeamA"
+              value="0"
+              min="0"
+              max="150"
+              required
+            />
+            <input
+              type="number"
+              name="scoreTeamB"
+              id="scoreTeamB"
+              value="0"
+              min="0"
+              max="150"
+              required
+            />
+            <label for="scoreTeamB">B</label>
+          </div>
+          <h3>Shot at goals : </h3>
+          <div>
+            <label for="shotAtGoalTeamA">A</label>
+            <input
+              type="number"
+              name="shotAtGoalTeamA"
+              id="shotAtGoalTeamA"
+              value="0"
+              min="0"
+              max="40"
+            />
+            <input
+              type="number"
+              name="shotAtGoalTeamB"
+              id="shotAtGoalTeamB"
+              value="0"
+              min="0"
+              max="40"
+            />
+            <label for="shotAtGoalTeamB">B</label>
+          </div>
+          <h3>Corners : </h3>
+          <div>
+            <label for="cornersTeamA">A</label>
+            <input
+              type="number"
+              name="cornersTeamA"
+              id="cornersTeamA"
+              value="0"
+              min="0"
+              max="20"
+            />
+            <input
+              type="number"
+              name="cornersTeamB"
+              id="cornersTeamB"
+              value="0"
+              min="0"
+              max="20"
+            />
+            <label for="cornersTeamB">B</label>
+          </div>
+          <h3>Ball out of play : </h3>
+          <div>
+            <label for="ballOutOfPlayTeamA">A</label>
+            <input
+              type="number"
+              name="ballOutOfPlayTeamA"
+              value="0"
+              min="0"
+              max="40"
+            />
+            <input
+              type="number"
+              name="ballOutOfPlayTeamB"
+              value="0"
+              max="40"
+              min="0"
+            />
+            <label for="ballOutOfPlayTeamB">B</label>
+          </div>
+          <div>
+            <button type="submit">Submit</button>
           </div>
         </form>
-        <div>
+        <div class="tournament-container-ranks">
           <h3>Ranks</h3>
           <ol id="ranksList"></ol>
         </div>
-        <div>
+        <div class="tournament-container-matchs">
           <h3>Matchs</h3>
           <ul id="matchsList"></ul>
         </div>
