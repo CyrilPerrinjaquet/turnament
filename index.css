@@ -27,31 +27,30 @@ main > div {
   height: 100%;
 }
 
-div > div:nth-child(3) {
+.tournament-container-ranks {
   align-self: flex-start;
   padding-left: 20px;
   height: 140px;
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow: auto;
   max-width: 400px;
 }
 
-div > div:nth-child(4) {
+.tournament-container-matchs {
   align-self: flex-start;
   padding-left: 20px;
-  height: 120px;
-  overflow-y: auto;
-  overflow-x: auto;
+  height: 150px;
+  overflow: auto;
   max-width: 600px;
 }
 
 input {
   min-width: 50px;
-  border: 2px solid transparent;
+  border: none;
   background-color: #e5e7eb;
   border-radius: 0.5rem;
   transition: border-color 0.8s;
   margin: 0 8px;
+  padding: 3px;
 }
 
 input:hover {
@@ -138,7 +137,7 @@ table button:hover {
     height: 3vh;
     font-size: 1em;
   }
-
+  
   .tournament-table-container {
     margin-top: 75px;
     display: flex;
@@ -146,7 +145,6 @@ table button:hover {
     justify-content: flex-start;
     overflow-x: auto;
   }
-
   label {
     font-size: 1.5em;
   }
