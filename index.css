@@ -39,7 +39,7 @@ div > div:nth-child(3) {
 div > div:nth-child(4) {
   align-self: flex-start;
   padding-left: 20px;
-  height: 150px;
+  height: 120px;
   overflow-y: auto;
   overflow-x: auto;
   max-width: 600px;
@@ -86,7 +86,7 @@ h2 ~ input {
   min-width: 150px;
 }
 
-main > div:nth-child(2) {
+.tournament-table-container {
   margin-top: 20px;
   padding-bottom: 30px;
 }
@@ -127,12 +127,13 @@ table button:hover {
     font-size: 1em;
   }
 
-  main > div:nth-child(2) {
-    overflow-x: scroll;
-  }
-
-  div > div:nth-child(4) {
-    max-width: 145vw;
+  .tournament-table-container {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: auto;
+    height: 100%;
   }
 
   label {
