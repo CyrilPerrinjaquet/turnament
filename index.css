@@ -27,22 +27,6 @@ main > div {
   height: 100%;
 }
 
-.tournament-container-ranks {
-  align-self: flex-start;
-  padding-left: 20px;
-  height: 140px;
-  overflow: auto;
-  max-width: 400px;
-}
-
-.tournament-container-matchs {
-  align-self: flex-start;
-  padding-left: 20px;
-  height: 150px;
-  overflow: auto;
-  max-width: 600px;
-}
-
 input {
   min-width: 50px;
   border: none;
@@ -114,9 +98,26 @@ table button:hover {
   background-color: #f3f4f6;
 }
 
+.tournament-container-ranks {
+  align-self: flex-start;
+  padding-left: 20px;
+  max-height: 150px;
+  overflow: auto;
+  max-width: 400px;
+}
+
+.tournament-container-matchs {
+  align-self: flex-start;
+  padding-left: 20px;
+  max-height: 150px;
+  overflow: auto;
+  max-width: 600px;
+}
+
 @media screen and (max-width: 440px) {
   main {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 
   body > div {
@@ -137,14 +138,15 @@ table button:hover {
     height: 3vh;
     font-size: 1em;
   }
-  
+
   .tournament-table-container {
-    margin-top: 75px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    align-items: flex-start;
     overflow-x: auto;
+    min-height: 400px;
   }
+
   label {
     font-size: 1.5em;
   }
