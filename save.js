@@ -23,6 +23,13 @@ function saveTournament(saveName) {
 }
 
 function loadTournament(saveName) {
+  /**
+  * TODO [BUG] Quand on load les stats, et qu'on veut trier, 
+  * le contenu disparaît entièrement, 
+  * il faudrait parser l'HTML pour récuperer les bonnes valeurs comme ci dessous :  
+  * Ex. : teamList = [{name: "TeamA", wins: 0, additionalInformation: { corners: 0, ballOutOfPlay: 0, shotAtGoal: 0 }}] 
+  */ 
+  
   const localStorageContent = localStorage.getItem(saveName);
   if (localStorageContent && localStorageContent.includes(SEPARATOR)) {
     const splitedList = localStorageContent.split(SEPARATOR);

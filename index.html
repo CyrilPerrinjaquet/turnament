@@ -18,7 +18,6 @@
               type="text"
               name="teamA"
               id="teamA"
-              class="teamInput"
               placeholder="Team A"
               maxlength="32"
               required
@@ -28,13 +27,12 @@
               type="text"
               name="teamB"
               id="teamB"
-              class="teamInput"
               placeholder="Team B"
               maxlength="32"
               required
             />
           </div>
-          <h3>Score of the teams : </h3>
+          <h3>Score of the teams :</h3>
           <div>
             <label for="scoreTeamA">A</label>
             <input
@@ -57,7 +55,7 @@
             />
             <label for="scoreTeamB">B</label>
           </div>
-          <h3>Shot at goals : </h3>
+          <h3>Shot at goals :</h3>
           <div>
             <label for="shotAtGoalTeamA">A</label>
             <input
@@ -78,7 +76,7 @@
             />
             <label for="shotAtGoalTeamB">B</label>
           </div>
-          <h3>Corners : </h3>
+          <h3>Corners :</h3>
           <div>
             <label for="cornersTeamA">A</label>
             <input
@@ -99,7 +97,7 @@
             />
             <label for="cornersTeamB">B</label>
           </div>
-          <h3>Ball out of play : </h3>
+          <h3>Ball out of play :</h3>
           <div>
             <label for="ballOutOfPlayTeamA">A</label>
             <input
@@ -131,7 +129,7 @@
           <ul id="matchsList"></ul>
         </div>
       </div>
-      <div>
+      <div class="tournament-table-container">
         <table>
           <thead>
             <tr>
@@ -157,8 +155,10 @@
       </div>
     </main>
     <div>
-      <button id="saveStorageButton">Save</button>
-      <button id="loadStorageButton">Load</button>
+      <div class="tournament-container-buttons">
+        <button id="saveStorageButton">Save</button>
+        <button id="loadStorageButton">Load</button>
+      </div>
     </div>
   </body>
   <script src="index.js"></script>
